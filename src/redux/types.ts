@@ -1,16 +1,16 @@
 export interface ObjetCharacte{
-    info: info[],
-    results: character[],
+    info: info,
+    results: character,
   }
 
   export interface ObjetLocation{
-    info: info[],
-    results: location[],
+    info: info,
+    results: location,
   }
 
   export interface ObjetEpisode{
-    info: info[],
-    results: episode[],
+    info: info,
+    results: episode,
   }
 
   export interface info{

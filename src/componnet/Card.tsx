@@ -1,4 +1,3 @@
-import Card from "react-bootstrap/esm/Card";
 import React from "react";
 import FavoritoCharacter from "./favoritoCharacter";
 import { character } from "@/redux/types";

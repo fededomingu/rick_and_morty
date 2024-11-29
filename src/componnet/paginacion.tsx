@@ -1,10 +1,9 @@
 import * as React from 'react';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import { useGetCharacterQuery } from '@/redux/services/userAPI';
 import { info } from '@/redux/types';
 
-export const Paginacion = ({ info }: { info: info  } ) => {
+export const Paginacion = ({ info }: { info: info } ) => {
     
   return (
     <Stack spacing={2}>
