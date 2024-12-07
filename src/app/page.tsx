@@ -2,14 +2,22 @@
 import { Paginacion } from "@/componnet/paginacion";
 import CircularIndeterminate from "@/componnet/progres";
 import Inicio from "@/pages/Inicio";
-import { useGetCharacterQuery } from "@/redux/services/userAPI";
+import { useGetCharacterPageQuery, useGetCharacterQuery } from "@/redux/services/userAPI";
 import Error from "next/error";
 
 
 
 export default function Home() {
   const {isFetching, isLoading, isError, data } = useGetCharacterQuery(null);
- 
+
+  const p = data?.info?.next ?? null;
+  let pag = 1;
+  if(p !== null){
+   pag =  parseInt(p.slice(-1));
+    
+  }
+  const algo = useGetCharacterPageQuery({pages: pag});
+  console.log(p,'---------',algo,'---------',pag);  
   if (isLoading || isFetching) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -23,24 +31,17 @@ export default function Home() {
         <p className="text-red-600 text-center">Error</p>
         <Error statusCode={500}></Error>    
       </div>  )};
-
-const defaultInfo = {
-  count: 0,
-  pages: 0,
-  next: '',
-  prev: ''
-};
   
   return (
     <>
       <div className="width-1024 text-black font-black">
           <header className="justify-items-center text-white">
-              <Paginacion info ={data?.info || defaultInfo} />
+              <Paginacion info = {data?.info } />
           </header>
       </div>
 
     <div className="bg-orange-200">
-        <Inicio results={data?.results} />
+        <Inicio characters = {data?.results} />
     </div>
     </>
   );
