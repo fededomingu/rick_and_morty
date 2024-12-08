@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { Character, Location, Episode } from "./services/userAPI";
 import favoritosReducer  from "./feature/favoritosSlice";
+import paginationReducer from "./feature/paginationSlice";
 
 export const store = configureStore({
     reducer:{
@@ -9,6 +10,7 @@ export const store = configureStore({
         [Location.reducerPath]: Location.reducer,
         [Episode.reducerPath]: Episode.reducer,
         favoritosReducer,
+        paginationReducer,
     },
     devTools: process.env.NODE_ENV !== 'production',
     middleware: (getDefaultMiddleware) => 

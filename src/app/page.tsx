@@ -2,22 +2,22 @@
 import { Paginacion } from "@/componnet/paginacion";
 import CircularIndeterminate from "@/componnet/progres";
 import Inicio from "@/pages/Inicio";
-import { useGetCharacterPageQuery, useGetCharacterQuery } from "@/redux/services/userAPI";
+//import { useAppDispatch } from "@/redux/hoock";
+import { useGetCharacterQuery } from "@/redux/services/userAPI";
 import Error from "next/error";
 
 
 
 export default function Home() {
   const {isFetching, isLoading, isError, data } = useGetCharacterQuery(null);
+ // const dispatch = useAppDispatch;
+  // const pag = parseInt((data?.info?.next ?? '1').slice(-1));
+  // console.log(pag);
 
-  const p = data?.info?.next ?? null;
-  let pag = 1;
-  if(p !== null){
-   pag =  parseInt(p.slice(-1));
-    
-  }
-  const algo = useGetCharacterPageQuery({pages: pag});
-  console.log(p,'---------',algo,'---------',pag);  
+  // useEffect(() => {
+  //   dispatch(useGetCharacterQuery());
+  // }, [data]);
+
   if (isLoading || isFetching) {
     return (
       <div className="flex justify-center items-center h-screen">

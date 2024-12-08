@@ -1,6 +1,6 @@
 export interface ObjetAPI{
-    info: info | null,
-    results: character[] | location[] | episode[] | null,
+    info: info,
+    results: character[],
   }
   export interface info{
     count: number,

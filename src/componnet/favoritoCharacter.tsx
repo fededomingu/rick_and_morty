@@ -24,6 +24,7 @@ const FavoritoCharacter: React.FC<FavoritoCharacterProps> = ({ characterId }) =>
             dispatch(addFavorito(characterId));
         }
     };
+    
     return (
         <IconButton onClick={handleFavorito} className='bg-red-500'>
             {isFavorito ? <FavoriteIcon /> : <FavoriteBorderIcon />}

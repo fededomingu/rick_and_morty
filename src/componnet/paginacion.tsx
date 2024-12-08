@@ -10,13 +10,15 @@ export const Paginacion = ({ info }: { info: info }) => {
   
 
   const handlepage = () => {
+
     
   };
     
   return (
     <Stack spacing={2}>
         <Pagination count={info.pages} variant="outlined" shape="rounded" 
-        onChange={()=>handlepage()}/>
+        onChange={()=>handlepage()}
+        />
     </Stack>
   );
 };
