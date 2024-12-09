@@ -19,7 +19,7 @@ export default function RootLayout({
         className="bg-gray-100 text-gray-900"
       >
         <div >
-          <Providers>{children}</Providers>
+          <Providers >{children}</Providers>
         </div>
       </body>
     </html>

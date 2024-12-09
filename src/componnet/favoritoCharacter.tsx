@@ -1,10 +1,10 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { RootState }  from '@/redux/store';
 import { removeFavorito, addFavorito }  from '../redux/feature/favoritosSlice';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { IconButton } from '@mui/material';
+import { useAppDispatch, useAppSelector } from '@/redux/hoock';
 
 
 
@@ -13,8 +13,8 @@ interface FavoritoCharacterProps {
 }
 
 const FavoritoCharacter: React.FC<FavoritoCharacterProps> = ({ characterId }) => {
-    const dispatch = useDispatch();
-    const isFavorito = useSelector((state: RootState) => 
+    const dispatch = useAppDispatch();
+    const isFavorito = useAppSelector((state: RootState) => 
         state.favoritosReducer.favoritos.includes(characterId));
 
     const handleFavorito = () => {

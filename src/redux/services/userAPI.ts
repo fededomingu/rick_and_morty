@@ -44,7 +44,7 @@ export const Episode = createApi({
         getEpisode: builder.query<ObjetAPI, null>({
         query: () => "episode",
         }),
-        getEpisodeById: builder.query<episode, { id: string }>({
+        getEpisodeById: builder.query<episode, { id: number }>({
             query: ({ id }) => `/${id}`,
         }),
         getEpisodePage: builder.query<number, ({ pages: number })>({

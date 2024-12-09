@@ -2,21 +2,18 @@
 import { Paginacion } from "@/componnet/paginacion";
 import CircularIndeterminate from "@/componnet/progres";
 import Inicio from "@/pages/Inicio";
-//import { useAppDispatch } from "@/redux/hoock";
-import { useGetCharacterQuery } from "@/redux/services/userAPI";
+import { useAppSelector } from "@/redux/hoock";
+import { useGetCharacterPageQuery } from "@/redux/services/userAPI";
+import { RootState } from "@/redux/store";
 import Error from "next/error";
-
+import Link from "next/link";
 
 
 export default function Home() {
-  const {isFetching, isLoading, isError, data } = useGetCharacterQuery(null);
- // const dispatch = useAppDispatch;
-  // const pag = parseInt((data?.info?.next ?? '1').slice(-1));
-  // console.log(pag);
-
-  // useEffect(() => {
-  //   dispatch(useGetCharacterQuery());
-  // }, [data]);
+   //const dispatch = useAppDispatch();
+   const page = useAppSelector((state: RootState) => 
+    state.paginationReducer.page);
+   const {isFetching, isLoading, isError, data } = useGetCharacterPageQuery({ pages: page });
 
   if (isLoading || isFetching) {
     return (
@@ -38,6 +35,11 @@ export default function Home() {
           <header className="justify-items-center text-white">
               <Paginacion info = {data?.info } />
           </header>
+      
+      <div>
+        
+        <Link href="/Favoritos">FAVORITOS</Link>
+      </div>
       </div>
 
     <div className="bg-orange-200">
