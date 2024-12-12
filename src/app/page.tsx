@@ -1,19 +1,17 @@
 'use client';
-import { Paginacion } from "@/componnet/paginacion";
 import CircularIndeterminate from "@/componnet/progres";
-import Inicio from "@/pages/Inicio";
-import { useAppSelector } from "@/redux/hoock";
-import { useGetCharacterPageQuery } from "@/redux/services/userAPI";
-import { RootState } from "@/redux/store";
+import {  useGetCharacterPageQuery } from "@/redux/services/userAPI";
+import CardChar from "@/componnet/Card";
 import Error from "next/error";
-import Link from "next/link";
+import { useAppSelector } from "@/redux/hoock";
+
+
 
 
 export default function Home() {
-   //const dispatch = useAppDispatch();
-   const page = useAppSelector((state: RootState) => 
-    state.paginationReducer.page);
-   const {isFetching, isLoading, isError, data } = useGetCharacterPageQuery({ pages: page });
+  const pag = useAppSelector((state) => state.paginationReducer.page); 
+  const {isFetching, isLoading, isError, data } = useGetCharacterPageQuery({pages: pag});
+ 
 
   if (isLoading || isFetching) {
     return (
@@ -30,21 +28,14 @@ export default function Home() {
       </div>  )};
   
   return (
-    <>
-      <div className="width-1024 text-black font-black">
-          <header className="justify-items-center text-white">
-              <Paginacion info = {data?.info } />
-          </header>
-      
-      <div>
-        
-        <Link href="/Favoritos">FAVORITOS</Link>
-      </div>
-      </div>
-
     <div className="bg-orange-200">
-        <Inicio characters = {data?.results} />
+      < div className="container mx-auto p-4">
+        <div className="grid grid-cols-4 gap-4">
+          {data?.results.map((character) => (
+            <CardChar key={character.id} character={character} />
+           ))}
+        </div>
+      </div>
     </div>
-    </>
   );
 }

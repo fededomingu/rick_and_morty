@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { character, location, episode, ObjetAPI, info } from "../types";
+import { character, location, episode, ObjetAPI } from "../types";
 
 
 const urlBase = 'https://rickandmortyapi.com/api';
@@ -12,11 +12,14 @@ export const Character = createApi({
         getCharacter: builder.query<ObjetAPI, null>({
         query: () => "character",
         }),
-        getCharacterById: builder.query<character, { id: string }>({
-            query: ({ id }) => `/${id}`,
+        getCharacterById: builder.query<character, { id: number }>({
+            query: ({ id }) => `character/${id}`,
         }),
-        getCharacterPage: builder.query<number, ({ pages: number })>({
+        getCharacterPage: builder.query<ObjetAPI, ({ pages: number })>({
             query: ({ pages }) => `character?page=${pages}`,
+        }),
+        getFavoritos: builder.query<character[], { char: number [] }>({
+            query: ({char}) => `character/${char}`,
         }),
     }),
 });
@@ -28,10 +31,10 @@ export const Location = createApi({
         getLocation: builder.query<ObjetAPI, null>({
         query: () => "location",
         }),
-        getLocationById: builder.query<location, { id: string }>({
-            query: ({ id }) => `/${id}`,
+        getLocationById: builder.query<location, { id: number }>({
+            query: ({ id }) => `location/${id}`,
         }),
-        getLocationPage: builder.query<number, ({ pages: number })>({
+        getLocationPage: builder.query<ObjetAPI, ({ pages: number })>({
             query: ({ pages }) => `location?page=${pages}`,
         }),
     }),
@@ -45,25 +48,15 @@ export const Episode = createApi({
         query: () => "episode",
         }),
         getEpisodeById: builder.query<episode, { id: number }>({
-            query: ({ id }) => `/${id}`,
+            query: ({ id }) => `episode/${id}`,
         }),
-        getEpisodePage: builder.query<number, ({ pages: number })>({
+        getEpisodePage: builder.query<ObjetAPI, ({ pages: number })>({
             query: ({ pages }) => `episode?page=${pages}`,
         }),
     }),
 });
 
-export const Paginacion = createApi({
-    reducerPath: "?page=",
-    baseQuery: fetchBaseQuery({ baseUrl: urlBase  }),
-    
-    endpoints: (builder) => ({
-        getPaginacion: builder.query<info, null>({
-        query: () => "character",
-        }),
-    }),
-});
 
-export const { useGetCharacterQuery, useGetCharacterByIdQuery, useGetCharacterPageQuery } = Character;
+export const { useGetCharacterQuery, useGetCharacterByIdQuery, useGetFavoritosQuery, useGetCharacterPageQuery } = Character;
 export const { useGetLocationQuery, useGetLocationByIdQuery, useGetLocationPageQuery } = Location;
 export const { useGetEpisodeQuery, useGetEpisodeByIdQuery, useGetEpisodePageQuery } = Episode;

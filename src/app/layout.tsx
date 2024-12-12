@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "@/redux/providers";
+import { Paginacion } from "@/componnet/paginacion";
 
 
 export const metadata: Metadata = {
@@ -19,7 +20,14 @@ export default function RootLayout({
         className="bg-gray-100 text-gray-900"
       >
         <div >
-          <Providers >{children}</Providers>
+          <Providers> 
+            <div className="width-1024 text-black font-black">
+              <div className="justify-items-center text-white">
+                <Paginacion />
+              </div>
+            </div>
+            {children}
+          </Providers>
         </div>
       </body>
     </html>
