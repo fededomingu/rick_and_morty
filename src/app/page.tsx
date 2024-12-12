@@ -4,6 +4,7 @@ import {  useGetCharacterPageQuery } from "@/redux/services/userAPI";
 import CardChar from "@/componnet/Card";
 import Error from "next/error";
 import { useAppSelector } from "@/redux/hoock";
+import {Paginacion} from "@/componnet/paginacion";
 
 
 
@@ -28,6 +29,8 @@ export default function Home() {
       </div>  )};
   
   return (
+    <div>
+    <Paginacion info = {data?.info}/>
     <div className="bg-orange-200">
       < div className="container mx-auto p-4">
         <div className="grid grid-cols-4 gap-4">
@@ -36,6 +39,7 @@ export default function Home() {
            ))}
         </div>
       </div>
+    </div>
     </div>
   );
 }
