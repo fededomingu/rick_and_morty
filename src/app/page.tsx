@@ -1,18 +1,22 @@
 'use client';
-import React from 'react';
+
 import {Paginacion} from "@/componnet/paginacion";
-import Inicio from "../componnet/Headers/Inicio";
+import Inicio from "@/componnet/Inicio";
+
+
+
 
 export default function Home() {
   
+  
   return (
-    <div>
-      <div>
-       <Paginacion />
+    <div >
+      <div  >
+        <Paginacion />
       </div>
-      <div>
-        <Inicio />
-      </div>
+      <div className="bg-green-400">
+         <Inicio />
+      </div>    
     </div>
   );
 }

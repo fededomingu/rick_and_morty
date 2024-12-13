@@ -15,16 +15,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className="bg-gray-100 text-gray-900"
-      >
+      <body>
         <div >
           <Providers> 
-            <div className="width-1024 text-black font-black">
-              <div className="justify-items-center text-white">
+            <div >
+              <div className="flex bg-amber-100 justify-center items-center">
                 <HeadersF />
               </div>
-              
             </div>
             {children}
           </Providers>

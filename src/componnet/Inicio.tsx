@@ -5,13 +5,11 @@ import {  useGetCharacterPageQuery } from "@/redux/services/userAPI";
 import CardChar from "@/componnet/Card";
 import Error from "next/error";
 import { useAppSelector } from "@/redux/hoock";
-const Inicio = () => {
 
+const Inicio = () => {
     const pag = useAppSelector((state) => state.paginationReducer.page); 
     const {isFetching, isLoading, isError, data } = useGetCharacterPageQuery({pages: pag});
-   
-  
-    if (isLoading || isFetching) {
+      if (isLoading || isFetching) {
       return (
         <div className="flex justify-center items-center h-screen">
           <CircularIndeterminate />
@@ -28,7 +26,7 @@ const Inicio = () => {
     return (
       <div>
       
-      <div className="bg-orange-200">
+      <div className="flex bg-orange-100">
         < div className="container mx-auto p-4">
           <div className="grid grid-cols-4 gap-4">
             {data?.results.map((character) => (

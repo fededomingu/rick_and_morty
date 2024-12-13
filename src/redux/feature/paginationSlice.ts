@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-
 const paginacionSlice = createSlice({
     name: 'paginacion',
     initialState: {
