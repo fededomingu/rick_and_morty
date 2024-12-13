@@ -7,7 +7,7 @@ const characterSlice = createSlice({
         character: {},
     },
     reducers: {
-        getCharacter: (state, action: PayloadAction<character>) => {
+        getCharacter: (state, action: PayloadAction<character[]>) => {
             state.character = action.payload;
         },
     }

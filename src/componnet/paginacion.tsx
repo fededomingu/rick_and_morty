@@ -2,17 +2,19 @@
 import * as React from 'react';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import { useAppDispatch } from '@/redux/hoock';
+import { useAppDispatch, useAppSelector } from '@/redux/hoock';
 import { setpage } from '@/redux/feature/paginationSlice';
-import { info } from '@/redux/types';
+import { useGetCharacterPageQuery } from '@/redux/services/userAPI';
 
 
 
-export const Paginacion = ({info }: {info: info}) => {
+export const Paginacion = () => {
   const dispatch = useAppDispatch();
+  const p = useAppSelector((state) => state.paginationReducer.page);
+  const { data } = useGetCharacterPageQuery({pages: p});
   const handlerPage = (value: number) => {
-   
       dispatch(setpage(value));
+      
   };
   
   
@@ -20,7 +22,7 @@ export const Paginacion = ({info }: {info: info}) => {
   <div className='flex justify-center'>
     <Stack spacing={2}>
       <Pagination
-        count={info.pages}
+        count={data?.info.pages}
         color='secondary'
         variant="outlined"
         shape="rounded"

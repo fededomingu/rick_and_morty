@@ -3,7 +3,6 @@ import "./globals.css";
 import { Providers } from "@/redux/providers";
 import HeadersF from "@/componnet/Headers/Headers";
 
-
 export const metadata: Metadata = {
   title: "Rick and Morty",
   description: "API Rick and Morty",
@@ -25,6 +24,7 @@ export default function RootLayout({
               <div className="justify-items-center text-white">
                 <HeadersF />
               </div>
+              
             </div>
             {children}
           </Providers>

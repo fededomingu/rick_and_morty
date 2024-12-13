@@ -13,9 +13,7 @@ const CardChar = ({ character }: { character: character }) => {
         width={200}
         height={200}
       />
-
       <p className="text-black justify-items-center">{character.name}</p>
-
       <p className="text-black justify-center">{character.species}</p>
       <p className="text-black justify-center">{character.location.name}</p>
     </div>

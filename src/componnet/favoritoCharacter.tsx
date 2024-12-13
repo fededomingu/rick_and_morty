@@ -6,8 +6,6 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { IconButton } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '@/redux/hoock';
 
-
-
 interface FavoritoCharacterProps {
     characterId: number;
 }
