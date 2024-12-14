@@ -13,10 +13,10 @@ const Page = () => {
  const {data} = useGetFavoritosQuery({char: fav });
  if(fav.length === 0){
     return <div className="bg-orange-200">
-      <div className="container mx-auto p-4">
-        <div className="grid grid-cols-4 gap-4">
-          <h1>No hay favoritos</h1>
-        </div>
+      <div >
+          <h1 className='text-3xl text-center text-blue-500 font-bold'>
+            No hay favoritos seleccionados
+            </h1>
       </div>
     </div>
   }

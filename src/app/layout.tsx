@@ -15,17 +15,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <div >
+      <body className="bg-amber-100">
           <Providers> 
-            <div >
               <div className="flex bg-amber-100 justify-center items-center">
                 <HeadersF />
               </div>
-            </div>
             {children}
           </Providers>
-        </div>
       </body>
     </html>
   );

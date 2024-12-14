@@ -18,7 +18,7 @@ export const Paginacion = () => {
   
   
   return (
-  <div>
+  <div className='flex justify-center bg-amber-100' >
     <Stack spacing={2} >
       <Pagination
         count={data?.info.pages}
@@ -26,7 +26,6 @@ export const Paginacion = () => {
         variant="outlined"
         shape="rounded"
         onChange={(event, value) => handlerPage(value)}
-        className='flex bg-emerald-200 justify-center items-center'
             />
     </Stack>
   </div>
