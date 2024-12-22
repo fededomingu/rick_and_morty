@@ -1,8 +1,6 @@
 import React from 'react';
 import { RootState }  from '@/redux/store';
 import { removeFavorito, addFavorito }  from '../redux/feature/favoritosSlice';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { IconButton } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '@/redux/hoock';
 import StarIcon from '@mui/icons-material/Star';

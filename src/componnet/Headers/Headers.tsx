@@ -10,7 +10,7 @@ const HeadersF = () => {
         <ButtonGroup variant="text" aria-label="Basic button group" >
           <Button onClick={() => router.push('/')}className="text-black">Inicio</Button>
           <Button onClick={() => router.push('Favoritos')}className="text-black">Favoritos</Button>
-          <Button onClick={() => router.push('Episodio')}className="text-black">Episodio</Button>
+          <Button onClick={() => router.push('Episodios')}className="text-black">Episodio</Button>
         </ButtonGroup>
       </div>
   
