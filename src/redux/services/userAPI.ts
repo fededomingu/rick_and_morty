@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { character, location, episode, ObjetAPI } from "../types";
+import { character, location, episode, ObjetEpisode, ObjetCharacter, ObjetLocation } from "../types";
 
 
 const urlBase = 'https://rickandmortyapi.com/api';
@@ -9,13 +9,13 @@ export const Character = createApi({
     reducerPath: "character",
     baseQuery: fetchBaseQuery({ baseUrl: urlBase }),
     endpoints: (builder) => ({
-        getCharacter: builder.query<ObjetAPI, null>({
+        getCharacter: builder.query<ObjetCharacter, null>({
         query: () => "character",
         }),
         getCharacterById: builder.query<character, { id: number }>({
             query: ({ id }) => `character/${id}`,
         }),
-        getCharacterPage: builder.query<ObjetAPI, ({ pages: number })>({
+        getCharacterPage: builder.query<ObjetCharacter, ({ pages: number })>({
             query: ({ pages }) => `character?page=${pages}`,
         }),
         getFavoritos: builder.query<character[], { char: number [] }>({
@@ -28,13 +28,13 @@ export const Location = createApi({
     reducerPath: "location",
     baseQuery: fetchBaseQuery({ baseUrl: urlBase  }),
     endpoints: (builder) => ({
-        getLocation: builder.query<ObjetAPI, null>({
+        getLocation: builder.query<ObjetLocation, null>({
         query: () => "location",
         }),
         getLocationById: builder.query<location, { id: number }>({
             query: ({ id }) => `location/${id}`,
         }),
-        getLocationPage: builder.query<ObjetAPI, ({ pages: number })>({
+        getLocationPage: builder.query<ObjetLocation, ({ pages: number })>({
             query: ({ pages }) => `location?page=${pages}`,
         }),
     }),
@@ -44,13 +44,13 @@ export const Episode = createApi({
     reducerPath: "episode",
     baseQuery: fetchBaseQuery({ baseUrl: urlBase  }),
     endpoints: (builder) => ({
-        getEpisode: builder.query<ObjetAPI, null>({
+        getEpisode: builder.query<ObjetEpisode, null>({
         query: () => "episode",
         }),
         getEpisodeById: builder.query<episode, { id: number }>({
             query: ({ id }) => `episode/${id}`,
         }),
-        getEpisodePage: builder.query<ObjetAPI, ({ pages: number })>({
+        getEpisodePage: builder.query<ObjetEpisode, ({ pages: number })>({
             query: ({ pages }) => `episode?page=${pages}`,
         }),
     }),

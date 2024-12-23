@@ -1,11 +1,26 @@
 'use client';
 import CircularIndeterminate from '@/componnet/progres';
+import { setpage } from '@/redux/feature/paginationSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/hoock';
 import { useGetEpisodePageQuery } from '@/redux/services/userAPI'
+// import { episode } from '@/redux/types';
+import { Pagination, Stack } from '@mui/material';
 import Error from "next/error";
 import React from 'react'
 
 const Page = () => {
-    const {isFetching, isLoading, isError, data } = useGetEpisodePageQuery({pages: 1});
+    const pages = useAppSelector((state) => state.paginationReducer.page);
+    const {isFetching, isLoading, isError, data } = useGetEpisodePageQuery({pages: pages});
+    const dispatch = useAppDispatch();
+    const handlerPage = (value: number) => {
+          dispatch(setpage(value));
+        };
+    // const character: string[] = [];    
+    // data?.results.map((e: episode) => {
+    //   character.push(...e.characters.map((e: string[]) => e.map((a)=> a.slice(-1))));
+    // });
+    
+  //  console.log(character);
     if (isLoading || isFetching) {
           return (
             <div className="flex justify-center items-center h-screen">
@@ -22,21 +37,43 @@ const Page = () => {
    
   return (
     <div>
-     <div >
-          <h1 className='text-3xl text-center text-blue-500 font-bold'>
-            No hay episodios seleccionados
-          </h1>
-      </div>
+     <div className='flex justify-center bg-amber-100' >
+    <Stack spacing={2} >
+      <Pagination
+        count={data?.info.pages}
+        color='secondary'
+        variant="outlined"
+        shape="rounded"
+        onChange={(event, value) => handlerPage(value)}
+            />
+    </Stack>
+    </div>
+  
       <div className="bg-lime-700 container mx-auto p-4">
       {data?.results.map((e) => (
               <div key={e.id}>
-                <p className='text-black'>{e.name}</p>
+                <li> 
+                <ul className='text-black'>{e.name}</ul>
                 <p>{e.episode}</p>
+                </li>
               </div>
         )
       )}
       </div>
-    </div>
+      {
+        character.map((e) => (
+          // eslint-disable-next-line react/jsx-key
+          <div >
+            <li>
+              <ul className='text-black'>{e}</ul>
+              <br />
+            </li>
+          </div>
+        )
+      )
+      }
+    </div> 
+
   )
 }
 

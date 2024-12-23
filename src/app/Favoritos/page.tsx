@@ -11,7 +11,7 @@ const Page = () => {
 
  const fav = useAppSelector((state: RootState) => state.favoritosReducer.favoritos);
  const {data} = useGetFavoritosQuery({char: fav });
- console.log(data, 'data', fav, 'fav');
+ 
  if(fav.length === 0){
     return (
     <div className="bg-orange-200">

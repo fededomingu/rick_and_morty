@@ -1,6 +1,14 @@
-export interface ObjetAPI{
+export interface ObjetCharacter{
     info: info,
     results: character[],
+  }
+  export interface ObjetLocation{
+    info: info,
+    results: location[],
+  }
+  export interface ObjetEpisode{
+    info: info,
+    results: episode[],
   }
   export interface info{
     count: number,
@@ -23,7 +31,7 @@ export interface ObjetAPI{
       origin: objet,
       location: objet,
       image: string,
-      episode: [],
+      episode: string[],
       url: string,
       created: string,
     }
@@ -34,7 +42,7 @@ export interface ObjetAPI{
       name: string,
       type: string,
       dimension: string,
-      residents: [string],
+      residents: string[],
       url: string,
       created: string,
       }
@@ -44,7 +52,7 @@ export interface ObjetAPI{
       name: string,
       air_date: string,
       episode: string,
-      characters: [string],
+      characters: string[],
       url: string,
       created: string,
       }   
