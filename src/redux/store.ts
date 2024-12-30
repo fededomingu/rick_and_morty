@@ -4,6 +4,7 @@ import { Character, Location, Episode } from "./services/userAPI";
 import favoritosReducer  from "./feature/favoritosSlice";
 import paginationReducer from "./feature/paginationSlice";
 import characterReducer from "./feature/characterSlice";
+import episodiosReducer from "./feature/episodiosSlice";
 
 export const store = configureStore({
     reducer:{
@@ -13,6 +14,7 @@ export const store = configureStore({
         favoritosReducer,
         paginationReducer,
         characterReducer,
+        episodiosReducer,
     },
     devTools: process.env.NODE_ENV !== 'production',
     middleware: (getDefaultMiddleware) => 

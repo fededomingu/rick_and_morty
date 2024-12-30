@@ -15,6 +15,9 @@ export const Character = createApi({
         getCharacterById: builder.query<character, { id: number }>({
             query: ({ id }) => `character/${id}`,
         }),
+        getCharacterMultipes: builder.query<ObjetCharacter[], { char: string [] }>({
+            query: ({char}) => `character/${char}`,
+        }),
         getCharacterPage: builder.query<ObjetCharacter, ({ pages: number })>({
             query: ({ pages }) => `character?page=${pages}`,
         }),
@@ -57,6 +60,6 @@ export const Episode = createApi({
 });
 
 
-export const { useGetCharacterQuery, useGetCharacterByIdQuery, useGetFavoritosQuery, useGetCharacterPageQuery } = Character;
+export const { useGetCharacterQuery, useGetCharacterByIdQuery, useGetFavoritosQuery, useGetCharacterPageQuery, useGetCharacterMultipesQuery} = Character;
 export const { useGetLocationQuery, useGetLocationByIdQuery, useGetLocationPageQuery } = Location;
 export const { useGetEpisodeQuery, useGetEpisodeByIdQuery, useGetEpisodePageQuery } = Episode;
