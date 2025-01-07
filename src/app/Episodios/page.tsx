@@ -1,4 +1,5 @@
 'use client';
+import EpisodioModal from '@/componnet/Episodio/EpisodioModal';
 import CircularIndeterminate from '@/componnet/progres';
 import { setpage } from '@/redux/feature/paginationSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hoock';
@@ -67,8 +68,7 @@ const Page = () => {
       {data?.results.map((e) => (
               <div key={e.id}>
                 <li>
-                  <Link className='text-black' href={`/Episodios/${e.name}`}>{e.name}</Link>
-                <p>{e.episode}</p>
+                  <EpisodioModal />
                 </li>
               </div>
         )

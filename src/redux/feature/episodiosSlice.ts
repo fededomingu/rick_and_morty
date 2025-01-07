@@ -4,7 +4,7 @@ import { episode } from "../types";
 const espisodiSlice = createSlice({
     name: 'episodios',
     initialState: {
-        episodios: {},
+        episodios: [] as episode[],
     },
     reducers: {
         getEpisodios: (state, action: PayloadAction<episode[]>) => {
