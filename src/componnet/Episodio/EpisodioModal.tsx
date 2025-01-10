@@ -8,9 +8,9 @@ import CardChar from '../Card';
 import { useAppDispatch, useAppSelector } from '@/redux/hoock';
 import { RootState } from '@/redux/store';
 import { getEpisodios } from '@/redux/feature/episodiosSlice';
-import { episode } from '@/redux/types';
+import { character, episode } from '@/redux/types';
 
-const EpisodioModal = () => {
+const EpisodioModal = ({ algo }: { algo: character }) => {
     const style = {
   position: 'absolute',
   top: '50%',
@@ -34,10 +34,10 @@ const EpisodioModal = () => {
       dispatch(getEpisodios(char));
     }
   }, [open]);
-
+  console.log('char', char, "-------------------", algo); 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}>{}</Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -53,7 +53,8 @@ const EpisodioModal = () => {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <CardChar character={char}/>
+            <p>algo</p>
+            {/* <CardChar character={char}/> */}
           </Box>
         </Fade>
       </Modal>

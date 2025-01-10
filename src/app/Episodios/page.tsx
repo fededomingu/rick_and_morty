@@ -7,7 +7,6 @@ import { useGetCharacterMultipesQuery, useGetEpisodePageQuery } from '@/redux/se
 import { episode } from '@/redux/types';
 import { Pagination, Stack } from '@mui/material';
 import Error from "next/error";
-import Link from 'next/link';
 import React from 'react'
 
 const Page = () => {
@@ -68,7 +67,7 @@ const Page = () => {
       {data?.results.map((e) => (
               <div key={e.id}>
                 <li>
-                  <EpisodioModal />
+                  <EpisodioModal algo={e.characters}/>
                 </li>
               </div>
         )
