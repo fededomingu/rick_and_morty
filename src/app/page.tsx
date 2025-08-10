@@ -6,10 +6,10 @@ export default function Home() {
  
   return (
     <div >
-      <div className="bg-amber-100 text-white" >
+      <div className="bg-amber-100 text-black" >
         <Paginacion />
       </div>
-      <div className="bg-green-300">
+      <div className="bg-sky-500 text-black">
          <Inicio />
       </div>    
     </div>

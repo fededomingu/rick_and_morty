@@ -5,12 +5,10 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import CardChar from '../Card';
-import { useAppDispatch, useAppSelector } from '@/redux/hoock';
-import { RootState } from '@/redux/store';
-import { getEpisodios } from '@/redux/feature/episodiosSlice';
 import { character, episode } from '@/redux/types';
+import { useGetCharacterByIdQuery } from '@/redux/services/userAPI';
 
-const EpisodioModal = ({ algo }: { algo: character }) => {
+const EpisodioModal = ({ episodios }: { episodios: episode }) => {
     const style = {
   position: 'absolute',
   top: '50%',
@@ -21,23 +19,39 @@ const EpisodioModal = ({ algo }: { algo: character }) => {
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
+  maxHeight: '80vh',
+  overflowY: 'auto',
+  borderRadius: '8px',
+  margin: 'auto',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: '16px',
+  backgroundColor: '#f0f0f0',
+  color: '#333',
+  fontFamily: 'Arial, sans-serif',
+  fontSize: '16px',
+  textAlign: 'center',
+  boxSizing: 'border-box',
+  padding: '16px',
+
 };
-  const dispatch = useAppDispatch();
-      const char: episode[] = useAppSelector((state: RootState) => 
-          state.episodiosReducer.episodios);
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  React.useEffect(() => {
-    if (open) {
-      dispatch(getEpisodios(char));
+  const charactersData: character[] = [];
+  episodios.characters.forEach((c) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const { data } = useGetCharacterByIdQuery({ id: parseInt(c.slice(42)) });
+    if (data) {
+      charactersData.push(data);
     }
-  }, [open]);
-  console.log('char', char, "-------------------", algo); 
+  });
   return (
     <div>
-      <Button onClick={handleOpen}>{}</Button>
+      <Button onClick={handleOpen}>{episodios.name}</Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -53,8 +67,10 @@ const EpisodioModal = ({ algo }: { algo: character }) => {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <p>algo</p>
-            {/* <CardChar character={char}/> */}
+            {charactersData.map((cha, index) => (
+              //console.log(cha, 'Character data'),
+              <CardChar key={index} character={cha} />
+            ))}
           </Box>
         </Fade>
       </Modal>

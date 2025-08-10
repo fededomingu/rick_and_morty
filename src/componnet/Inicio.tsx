@@ -24,10 +24,9 @@ const Inicio = () => {
         </div>  )};
     
     return (
-      <div>
-      
-      <div className="flex bg-orange-100">
-        < div className="container mx-auto p-4">
+           
+      <div className="flex bg-orange-500 justify-center items-center p-4">
+        < div className="bg-yellow-400 container mx-auto p-4">
           <div className="grid grid-cols-4 gap-4">
             {data?.results.map((character) => (
               <CardChar key={character.id} character={character} />
@@ -35,7 +34,7 @@ const Inicio = () => {
           </div>
         </div>
       </div>
-      </div>
+
     );
   }
 export default Inicio

@@ -3,8 +3,7 @@ import EpisodioModal from '@/componnet/Episodio/EpisodioModal';
 import CircularIndeterminate from '@/componnet/progres';
 import { setpage } from '@/redux/feature/paginationSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hoock';
-import { useGetCharacterMultipesQuery, useGetEpisodePageQuery } from '@/redux/services/userAPI'
-import { episode } from '@/redux/types';
+import { useGetEpisodePageQuery } from '@/redux/services/userAPI'
 import { Pagination, Stack } from '@mui/material';
 import Error from "next/error";
 import React from 'react'
@@ -16,24 +15,7 @@ const Page = () => {
     const handlerPage = (value: number) => {
           dispatch(setpage(value));
         };
-    const character: string[][] = [];    
-    //obtengo los id de los personajes de cada episodio como es la url de cada personaje obtengo el ultimo character
-    data?.results.map((e: episode) => {
-      character.push(e.characters.map((e) => {
-        const parts = e.split('/');
-        return parts[parts.length - 1];
-      }));
-    });
 
-    
-    const uno = useGetCharacterMultipesQuery({char: character[0]});
-    /*
-    obteng  en character un array con array de los id de los personajes
-    para luego hacer una consulta por cada array como consulta multiple /[1,2,3]
-    usando el metodo getCharacterByIdsQuery
-    */
-  //  const aver = getCharacterByIdsQuery(character[0]);
-    console.log('----', uno);
     if (isLoading || isFetching) {
           return (
             <div className="flex justify-center items-center h-screen">
@@ -61,13 +43,14 @@ const Page = () => {
             />
     </Stack>
     </div>
-  
-      <div className="bg-lime-700 container mx-auto p-4">
-        
+
+      <div className = "bg-slate-400 container mx-auto p-4">
+
       {data?.results.map((e) => (
               <div key={e.id}>
-                <li>
-                  <EpisodioModal algo={e.characters}/>
+                <li
+                  className="bg-green-300 p-4 mb-4 rounded shadow-md hover:shadow-lg transition-shadow duration-300">
+                  <EpisodioModal episodios={e}/>
                 </li>
               </div>
         )

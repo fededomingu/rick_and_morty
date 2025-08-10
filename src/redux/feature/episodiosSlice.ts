@@ -4,15 +4,15 @@ import { episode } from "../types";
 const espisodiSlice = createSlice({
     name: 'episodios',
     initialState: {
-        episodios: [] as episode[],
+        episodios: {},
     },
     reducers: {
-        getEpisodios: (state, action: PayloadAction<episode[]>) => {
+        getEpisode(state, action: PayloadAction<episode[]>) {
             state.episodios = action.payload;
-        },
+        }
     }
 });
 
-export const { getEpisodios } = espisodiSlice.actions;
+export const { getEpisode } = espisodiSlice.actions;
 
 export default espisodiSlice.reducer;
